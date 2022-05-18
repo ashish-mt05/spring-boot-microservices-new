@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @Testcontainers
-@AutoConfigureMockMvc
+@AutoConfigureMockMvc //this is for enable MockMvc autowiring
 class ProductServiceApplicationTests {
 
     @Container
@@ -37,6 +37,7 @@ class ProductServiceApplicationTests {
 
     @DynamicPropertySource
     static void setProperties(DynamicPropertyRegistry dymDynamicPropertyRegistry) {
+        //set up url of mongodb
         dymDynamicPropertyRegistry.add("spring.data.mongodb.uri", mongoDBContainer::getReplicaSetUrl);
     }
 
